@@ -53,7 +53,7 @@ public class ConnectionClass {
                 return arr;
    
     }
-      public boolean getProduct(String pcode, String pdesp) throws ClassNotFoundException, SQLException
+      public boolean addProduct(String pcode, String pdesp) throws ClassNotFoundException, SQLException
             
     {
         Class.forName("com.mysql.jdbc.Driver");
@@ -70,5 +70,55 @@ public class ConnectionClass {
         return false;
         
     }
+      public boolean delProduct(String pcode) throws ClassNotFoundException, SQLException
+            
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("delete from productmodel where pcode=?");
+        ps.setString(1, pcode);
+        int x =  ps.executeUpdate();
+        if(x>0)
+        {
+             return true;
+        }
+        
+        return false;
+        
+    }
+       public boolean checkProduct(String pcode) throws ClassNotFoundException, SQLException
+            
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("select pcode from productmodel where pcode=?");
+        ps.setString(1, pcode);
+        ResultSet rs =  ps.executeQuery();
+        if(rs.next())
+        {
+             return true;
+        }
+        
+        return false;
+        
+    }
+        public boolean modifyProduct(String pcode,String pdesp) throws ClassNotFoundException, SQLException
+            
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        System.out.println(pdesp);
+        PreparedStatement ps = con.prepareStatement("update productmodel set pdesp=? where pcode =? ");
+        ps.setString(1, pdesp);
+        ps.setString(2, pcode);
+        int x = ps.executeUpdate();
+        System.out.println(x);
+        if(x>0)
+        return true;
+        else 
+            return false;
+    }
+       
+        
   
 }

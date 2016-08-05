@@ -24,5 +24,7 @@
 </html>
 <p style="font-family: cursive;font-size: 14pt">
     ${msg}
-    
 </p>
+<form:form action="Product" method="get">
+    <input type="submit" value="Back"/>
+</form:form>

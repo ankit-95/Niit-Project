@@ -7,6 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -46,7 +47,10 @@
             <input type="submit" name="btn1" value="Delete"/>
             
         </form:form>
-        
+            <br>
+            <form:form  action="LoginForm" method="post">
+                <input type="submit" value="Logout"  />
+            </form:form>
         
     </body>
 </html>

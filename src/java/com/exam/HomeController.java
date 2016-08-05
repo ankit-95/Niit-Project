@@ -188,7 +188,7 @@ public class HomeController {
         ConnectionClass c = new ConnectionClass();
        String pcode = myProductModel.getPcode();
        String pdesp = myProductModel.getPdesp();
-       if(c.getProduct(pcode, pdesp))
+       if(c.addProduct(pcode, pdesp))
        {
            return new ModelAndView("Create","msg","Product Added SuccessFully");
        }
@@ -198,5 +198,34 @@ public class HomeController {
            
        }
     }
+    
+    @RequestMapping (value="/ProductDelete",method = RequestMethod.GET)
+    public ModelAndView productDel(@ModelAttribute(value = "myProduct") ProductModel myProduct) throws ClassNotFoundException, SQLException
+    {
+        ConnectionClass c = new ConnectionClass();
+        String pcode= myProduct.getPcode();
+        if(c.delProduct(pcode))
+        return new ModelAndView("Delete","msg","Record Deleted Successfuly.");
+        else
+        return new ModelAndView("Delete","msg","Such Record Does not Exist.");
+            
+    }
+    
+    @RequestMapping(value = "/ProductModify",method = RequestMethod.GET)
+    public ModelAndView productModify(@ModelAttribute (value = "myProduct") ProductModel myProductModel) throws ClassNotFoundException, SQLException
+    {
+        ConnectionClass c = new ConnectionClass();
+        String pcode = myProductModel.getPcode();
+        String pdesp = myProductModel.getPdesp();
+        if(c.checkProduct(pcode))
+        {
+            c.modifyProduct(pcode, pdesp);
+            return new ModelAndView("Modify","msg","Product Updated Successfully.");
+        }
+        else
+        {
+        return new ModelAndView("Modify","msg","Record Does Not Exist.");
+        }
+        }
     
 }
