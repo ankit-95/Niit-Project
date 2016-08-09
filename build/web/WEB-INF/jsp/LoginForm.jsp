@@ -4,6 +4,7 @@
     Author     : ANKIT
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="http://www.springframework.org/tags/form" prefix="form" %>
 
@@ -50,6 +51,11 @@
         </table>
         </body>
 </html>
+<c:choose>
+    <c:when test="${try=='false'}">
 <p style="color:red; font-family: monospace;font-size: 16pt">
     ${requestScope.msg}
 </p>
+    </c:when>
+    
+</c:choose>

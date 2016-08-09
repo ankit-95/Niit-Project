@@ -18,7 +18,8 @@ servlet but should be the only JSP outside of WEB-INF.
                     <a href="<c:url value='/LoginForm'/>"> Administrator </a>
                 </th>
                 <th>
-                Banking Officer
+                    <a href="<c:url value='/LoginBank'/>">Banking Officer</a>
+               
                 </th>
                 <th>
                     <a href="<c:url value='/WelcomeCust'/>">Customer</a>

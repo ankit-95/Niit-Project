@@ -119,6 +119,196 @@ public class ConnectionClass {
             return false;
     }
        
+    public ArrayList<ArrayList> getBranch() throws ClassNotFoundException, SQLException
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        ArrayList <ArrayList> arr = new ArrayList<>();
+        ArrayList <String> a1 = new ArrayList<>();
+        ArrayList <String> a2 = new ArrayList<>();
         
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("select * from branchmodel");
+        ResultSet rs = ps.executeQuery();
+        while(rs.next())
+        {
+             a1.add(rs.getString(1));
+             a2.add(rs.getString(2));
+        }   
+            
+                 arr.add(a1);
+               arr.add(a2);
+               System.out.println(arr);
+                return arr;
+   
+    }
+   
+       public boolean addBranch(String bcode, String blocation) throws ClassNotFoundException, SQLException
+            
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("insert into branchmodel values(?,?);");
+        ps.setString(1, bcode);
+        ps.setString(2, blocation);
+        int x =  ps.executeUpdate();
+        if(x>0)
+        {
+            return true;
+        }
+        
+        return false;
+        
+    }
+   
+        public boolean delBranch(String bcode) throws ClassNotFoundException, SQLException
+            
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("delete from branchmodel where bcode=?");
+        ps.setString(1, bcode);
+        int x =  ps.executeUpdate();
+        if(x>0)
+        {
+             return true;
+        }
+        
+        return false;
+        
+    }
   
+           public boolean checkBranch(String bcode) throws ClassNotFoundException, SQLException
+            
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("select bcode from branchmodel where bcode=?");
+        ps.setString(1, bcode);
+        ResultSet rs =  ps.executeQuery();
+        if(rs.next())
+        {
+             return true;
+        }
+        
+        return false;
+        
+    }
+        public boolean modifyBranch(String bcode,String blocation) throws ClassNotFoundException, SQLException
+            
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("update branchmodel set blocation=? where bcode =? ");
+        ps.setString(1, blocation);
+        ps.setString(2, bcode);
+        int x = ps.executeUpdate();
+        if(x>0)
+        return true;
+        else 
+            return false;
+    }
+  
+         public ArrayList<ArrayList> getBO() throws ClassNotFoundException, SQLException
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        ArrayList <ArrayList> arr = new ArrayList<>();
+        ArrayList <String> a1 = new ArrayList<>();
+        ArrayList <String> a2 = new ArrayList<>();
+        ArrayList <String> a3 = new ArrayList<>();
+        ArrayList <String> a4 = new ArrayList<>();
+        
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("select * from bomodel");
+        ResultSet rs = ps.executeQuery();
+        while(rs.next())
+        {
+             a1.add(rs.getString(1));
+             a2.add(rs.getString(2));
+             a3.add(rs.getString(3));
+           a4.add(rs.getString(4));
+             
+        }   
+            
+                 arr.add(a1);
+               arr.add(a2);
+              arr.add(a3);
+               arr.add(a4);
+               System.out.println(arr);
+                return arr;
+   
+    }
+  
+           public boolean addBo(String bocode, String boname,String bouname,String bopwd) throws ClassNotFoundException, SQLException
+            
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("insert into bomodel values(?,?,?,?);");
+        ps.setString(1, bocode);
+        ps.setString(2, boname);
+        ps.setString(3, bouname);
+        ps.setString(4, bopwd);
+        int x =  ps.executeUpdate();
+        if(x>0)
+        {
+            return true;
+        }
+        
+        return false;
+        
+    }
+           
+               public boolean delBo(String bocode) throws ClassNotFoundException, SQLException
+            
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("delete from bomodel where bocode=?");
+        ps.setString(1, bocode);
+        int x =  ps.executeUpdate();
+        if(x>0)
+        {
+             return true;
+        }
+        
+        return false;
+        
+    }
+                 public boolean checkBo(String bocode) throws ClassNotFoundException, SQLException
+            
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("select bocode from bomodel where bocode=?");
+        ps.setString(1, bocode);
+        ResultSet rs =  ps.executeQuery();
+        if(rs.next())
+        {
+             return true;
+        }
+        
+        return false;
+        
+    }
+
+    boolean getBoParameters(String bouname, String bopwd) throws ClassNotFoundException, SQLException 
+    {
+     Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("select * from bomodel where bouname=? and bopwd=?");
+        ps.setString(1, bouname);
+        ps.setString(2, bopwd);
+        ResultSet rs =  ps.executeQuery();
+        if(rs.next())
+        {
+            return true;
+        }
+        
+        return false;
+        
+    
+    }
+    
+   
+   
 }

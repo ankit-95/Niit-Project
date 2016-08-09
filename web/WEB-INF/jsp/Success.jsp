@@ -22,13 +22,13 @@
                     <a href="<c:url value='/Product'/>">Products And Services</a>
                 </th>
                 <th>
-                    Branches
+                    <a href="<c:url value='/Branch'/>">Branches</a>
                 </th>
                 <th>
                     Service Desk Counters
                 </th>
                 <th>
-                    Banking Officers
+                    <a href="<c:url value='/BankingOfficer'/>">Banking Officer</a>
                 </th>
             </tr>
         </table>

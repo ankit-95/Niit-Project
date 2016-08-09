@@ -24,7 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
   
     ArrayList<String> ar = new ArrayList<>();
-       
     int count=1;
         
     HttpSession sess = null;
@@ -62,6 +61,7 @@ public class HomeController {
         }
         else
         {
+            req.setAttribute("try", "false");
             mv = new ModelAndView("LoginForm","msg","Invalid Username or Password.");
             return mv;
        
@@ -168,16 +168,17 @@ public class HomeController {
         System.out.println(btnPressed);
         if(btnPressed.equals("Create"))
         {
-          return "Create";
+          return "Createproduct";
         }
         else if(btnPressed.equals("Modify"))
         {
-            return "Modify";
+            return "Modifyproduct";
         }
         else if(btnPressed.equals("Delete"))
         {
-            return "Delete";
+            return "Deleteproduct";
         }
+        else
         return "Product";
     }
     
@@ -190,11 +191,11 @@ public class HomeController {
        String pdesp = myProductModel.getPdesp();
        if(c.addProduct(pcode, pdesp))
        {
-           return new ModelAndView("Create","msg","Product Added SuccessFully");
+           return new ModelAndView("Createproduct","msg","Product Added SuccessFully");
        }
        else
        {
-           return new ModelAndView("Create","msg","There was some problem.");
+           return new ModelAndView("Createproduct","msg","There was some problem.");
            
        }
     }
@@ -205,9 +206,9 @@ public class HomeController {
         ConnectionClass c = new ConnectionClass();
         String pcode= myProduct.getPcode();
         if(c.delProduct(pcode))
-        return new ModelAndView("Delete","msg","Record Deleted Successfuly.");
+        return new ModelAndView("Deleteproduct","msg","Record Deleted Successfuly.");
         else
-        return new ModelAndView("Delete","msg","Such Record Does not Exist.");
+        return new ModelAndView("Deleteproduct","msg","Such Record Does not Exist.");
             
     }
     
@@ -220,12 +221,262 @@ public class HomeController {
         if(c.checkProduct(pcode))
         {
             c.modifyProduct(pcode, pdesp);
-            return new ModelAndView("Modify","msg","Product Updated Successfully.");
+            return new ModelAndView("Modifyproduct","msg","Product Updated Successfully.");
         }
         else
         {
-        return new ModelAndView("Modify","msg","Record Does Not Exist.");
+        return new ModelAndView("Modifyproduct","msg","Record Does Not Exist.");
         }
         }
+    
+    @RequestMapping(value = "/Branch",method = RequestMethod.GET)
+    public String branchShow(HttpServletRequest req ) throws ClassNotFoundException, SQLException
+    {
+        int flag=1;
+        ConnectionClass c = new ConnectionClass();
+        ArrayList<ArrayList> arr = c.getBranch();
+        for(ArrayList<String> a : arr)
+        {
+          req.setAttribute("Branch"+flag, a);
+          flag++;
+      
+        }
+        return "Branch";
+    }
+    
+    @ModelAttribute(value = "myBranch")
+    public BranchModel newBranch()
+    {
+        return new BranchModel();
+    }
+    
+    @RequestMapping(value = "/BranchCreate",method = RequestMethod.GET)
+    public String BranchCheck(HttpServletRequest req)
+    {
+        String btnPressed = req.getParameter("btn1");
+        System.out.println(btnPressed);
+        if(btnPressed.equals("Create"))
+        {
+          return "Createbranch";
+        }
+        else if(btnPressed.equals("Modify"))
+        {
+            return "Modifybranch";
+        }
+        else if(btnPressed.equals("Delete"))
+        {
+            return "Deletebranch";
+        }
+        else
+        return "Branch";
+    }
+    
+     @RequestMapping(value = "/BranchCreate",method = RequestMethod.POST)
+    public ModelAndView createBranch(@ModelAttribute(value = "myBranch") BranchModel myBranch) throws ClassNotFoundException, SQLException
+     
+    {
+        ConnectionClass c = new ConnectionClass();
+       String bcode = myBranch.getBcode();
+       String blocation = myBranch.getBlocation();
+        if(c.addBranch(bcode, blocation))
+       {
+           return new ModelAndView("Createbranch","msg","Branch Added SuccessFully");
+       }
+       else
+       {
+           return new ModelAndView("Createbranch","msg","There was some problem.");
+           
+       }
+    }
+   
+     @RequestMapping (value="/BranchDelete",method = RequestMethod.GET)
+    public ModelAndView branchDel(@ModelAttribute(value = "myBranch") BranchModel myBranch) throws ClassNotFoundException, SQLException
+    {
+        ConnectionClass c = new ConnectionClass();
+        String bcode= myBranch.getBcode();
+        if(c.delBranch(bcode))
+        return new ModelAndView("Deletebranch","msg","Branch Deleted Successfuly.");
+        else
+        return new ModelAndView("Deletebranch","msg","Such Record Does not Exist.");
+            
+    }
+
+    @RequestMapping(value = "/BranchModify",method = RequestMethod.GET)
+    public ModelAndView branchModify(@ModelAttribute (value = "myBranch") BranchModel myBranch) throws ClassNotFoundException, SQLException
+    {
+        ConnectionClass c = new ConnectionClass();
+        String bcode = myBranch.getBcode();
+        String blocation = myBranch.getBlocation();
+        if(c.checkBranch(bcode))
+        {
+            c.modifyBranch(bcode, blocation);
+            return new ModelAndView("Modifybranch","msg","Branch Updated Successfully.");
+        }
+        else
+        {
+        return new ModelAndView("Modifybranch","msg","Record Does Not Exist.");
+        }
+        }
+
+        @RequestMapping(value = "/BankingOfficer",method = RequestMethod.GET)
+    public String boShow(HttpServletRequest req ) throws ClassNotFoundException, SQLException
+    {
+        int flag=1;
+        ConnectionClass c = new ConnectionClass();
+        ArrayList<ArrayList> arr = c.getBO();
+        for(ArrayList<String> a : arr)
+        {
+          req.setAttribute("Bo"+flag, a);
+          flag++;
+      
+        }
+        return "BankingOfficer";
+    }
+    
+     @ModelAttribute(value = "myBo")
+    public BOModel newBo()
+    {
+        return new BOModel();
+    }
+    
+    @RequestMapping(value = "/BoCreate",method = RequestMethod.GET)
+    public String BoCheck(HttpServletRequest req)
+    {
+        String btnPressed = req.getParameter("btn1");
+        System.out.println(btnPressed);
+        if(btnPressed.equals("Create"))
+        {
+          return "Createbo";
+        }
+        else if(btnPressed.equals("Modify"))
+        {
+            return "Modifybo";
+        }
+        else if(btnPressed.equals("Delete"))
+        {
+            return "Deletebo";
+        }
+        else
+        return "BankingOfficer";
+    }
+    
+    @RequestMapping(value = "/BoCreate",method = RequestMethod.POST)
+    public ModelAndView createBo(@ModelAttribute(value = "myBo") BOModel myBo) throws ClassNotFoundException, SQLException
+     
+    {
+        ConnectionClass c = new ConnectionClass();
+        String bocode = myBo.getBocode();
+        String boname = myBo.getBoname();
+        String bouname = myBo.getBouname();
+        String bopwd = myBo.getBopwd();
+        if(c.addBo(bocode,boname,bouname,bopwd))
+       {
+           return new ModelAndView("Createbo","msg","Banking Officer Added SuccessFully");
+       }
+       else
+       {
+           return new ModelAndView("Createbo","msg","There was some problem.");
+           
+       }
+    }
+    
+     @RequestMapping (value="/BoDelete",method = RequestMethod.GET)
+    public ModelAndView boDel(@ModelAttribute(value = "myBo") BOModel myBo) throws ClassNotFoundException, SQLException
+    {
+        ConnectionClass c = new ConnectionClass();
+        String bocode= myBo.getBocode();
+        if(c.delBo(bocode))
+        return new ModelAndView("Deletebo","msg","Banking Officer Deleted Successfuly.");
+        else
+        return new ModelAndView("Deletebo","msg","Such Record Does not Exist.");
+            
+    }
+
+     @RequestMapping(value = "/BoModify",method = RequestMethod.GET)
+    public ModelAndView checkboModify(@ModelAttribute (value = "myBo") BOModel myBo) throws ClassNotFoundException, SQLException
+    {
+        
+        ConnectionClass c = new ConnectionClass();
+        String bocode = myBo.getBocode();
+       String bohelp = myBo.getBohelp();
+       if(c.checkBo(bocode))
+        {
+            if(bohelp.equals("boname"))
+            {
+            return new ModelAndView("Modifybo","msg",bohelp);
+                  }
+            else if(bohelp.equals("bouname"))
+            {
+            return new ModelAndView("Modifybo","msg",bohelp);
+                
+            }
+            else if(bohelp.equals("bopwd"))
+            {
+            return new ModelAndView("Modifybo","msg",bohelp);
+                
+            }
+        }
+        else
+        return new ModelAndView("Modifybo","msg","Record Does Not Exist.");
+         return new ModelAndView("BankingOfficer");
+       
+        }
+     
+      @ModelAttribute(value = "myBo")
+    public BOModel newbieBo()
+    {
+        return new BOModel();
+    }
+   
+    
+    @RequestMapping(value = "/LoginBank",method = RequestMethod.GET)
+    public String gotoBoLogin()
+    {
+        return "LoginBank";
+    }
+    @RequestMapping(value = "/LoginBank",method = RequestMethod.POST)
+    public ModelAndView validateLogin(@ModelAttribute("myBo") BOModel myBo,HttpServletRequest req) throws ClassNotFoundException, SQLException
+    {
+        sess= req.getSession();
+        
+        String bouname = myBo.getBouname();
+        String bopwd = myBo.getBopwd();
+        ModelAndView mv1 = null;
+        String msg=null;
+        ConnectionClass c = new  ConnectionClass();
+       if(c.getBoParameters(bouname, bopwd))
+        {
+            mv1 = new ModelAndView("SuccessBank");
+            return mv1;
+        }
+        else
+        {
+            req.setAttribute("try", "false");
+            mv1 = new ModelAndView("LoginBank","msg","Invalid Username or Password.");
+            return mv1;
+       
+            }
+    }
+    
+    @RequestMapping(value = "/BankInc",method = RequestMethod.GET)
+    public ModelAndView delBank(HttpServletRequest req)
+    {
+        
+            
+        if(ar.isEmpty())
+        {
+            
+            return new ModelAndView("SuccessBank","msg","Queue is Empty.");
+     
+            
+        }
+            else
+        {
+             req.setAttribute("Array", ar);
+            ar.remove(0);   
+            return new ModelAndView("SuccessBank","msg","Deletetd From the Queue.");
+        }
+        
+    }
     
 }
