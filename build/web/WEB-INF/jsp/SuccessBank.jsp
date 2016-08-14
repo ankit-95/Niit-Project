@@ -30,12 +30,10 @@
      
     </c:when>
 <c:otherwise>
-<p style="font-family: cursive;font-size: 14pt">
-    Left Queue is : </p>
-
-<c:forEach var="i"  begin="0" end="4" step="1" items="${Array}">
-    <p> ${i} <br>
-            </p> 
-        </c:forEach>
+   
+    <p style="font-family: cursive;font-size: 14pt">
+        ${msg}
+</p>
+   
 </c:otherwise>
 </c:choose>

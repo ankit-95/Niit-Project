@@ -15,15 +15,18 @@ servlet but should be the only JSP outside of WEB-INF.
         <table width="100%">
             <tr>
                 <th>
-                    <a href="<c:url value='/LoginForm'/>"> Administrator </a>
+               <form action="<c:url value="/LoginForm" />">
+                    <button type="submit">Administrator</button>
+                    </form> </th>
+                <th>
+                    <form action="<c:url value="/LoginBank" />">
+                    <button type="submit">Banking Officer</button>
+                    </form>
                 </th>
                 <th>
-                    <a href="<c:url value='/LoginBank'/>">Banking Officer</a>
-               
-                </th>
-                <th>
-                    <a href="<c:url value='/WelcomeCust'/>">Customer</a>
-                </th>
+               <form action="<c:url value="/WelcomeCust" />">
+                    <button type="submit">Customer</button>
+                    </form> </th>
                     
             </tr>
         </table>

@@ -308,6 +308,27 @@ public class ConnectionClass {
         
     
     }
+
+    public ArrayList<ArrayList> getServicedesk() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.jdbc.Driver");
+        ArrayList <ArrayList> arr = new ArrayList<>();
+        ArrayList <String> a1 = new ArrayList<>();
+        ArrayList <String> a2 = new ArrayList<>();
+        
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("select * from servicedesk");
+        ResultSet rs = ps.executeQuery();
+        while(rs.next())
+        {
+             a1.add(rs.getString(1));
+             a2.add(rs.getString(2));
+        }   
+            
+                 arr.add(a1);
+               arr.add(a2);
+                return arr;
+   
+    }
     
    
    

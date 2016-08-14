@@ -461,7 +461,6 @@ public class HomeController {
     @RequestMapping(value = "/BankInc",method = RequestMethod.GET)
     public ModelAndView delBank(HttpServletRequest req)
     {
-        
             
         if(ar.isEmpty())
         {
@@ -473,10 +472,28 @@ public class HomeController {
             else
         {
              req.setAttribute("Array", ar);
-            ar.remove(0);   
-            return new ModelAndView("SuccessBank","msg","Deletetd From the Queue.");
+             String x = ar.get(0);
+             ar.remove(0);     
+             return new ModelAndView("SuccessBank","msg",x+" is deletetd From the Queue.");
         }
         
     }
     
-}
+    @RequestMapping(value = "/Servicedesk",method = RequestMethod.GET)
+    public String getServicedesk(HttpServletRequest req) throws ClassNotFoundException, SQLException
+    {
+        int flag=1;
+        ConnectionClass c = new ConnectionClass();
+        ArrayList<ArrayList> arr = c.getServicedesk();
+        for(ArrayList<String> a : arr)
+        {
+          req.setAttribute("Servicedesk"+flag, a);
+          flag++;
+      
+        }
+        return "Servicedesk";
+    }
+    
+    
+        }
+

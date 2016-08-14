@@ -16,20 +16,26 @@
         <title>Logged On!!</title>
     </head>
     <body>
-        <table border="1" width="100%">
+        <table  width="50%">
             <tr>
                 <th>
-                    <a href="<c:url value='/Product'/>">Products And Services</a>
+                    <form action="<c:url value="/Product" />">
+                    <button type="submit">Products And Services</button>
+                    </form>  
                 </th>
                 <th>
-                    <a href="<c:url value='/Branch'/>">Branches</a>
+                    <form action="<c:url value="/Branch" />">
+                    <button type="submit">Branches</button>
+                    </form>  
                 </th>
                 <th>
-                    Service Desk Counters
-                </th>
+               <form action="<c:url value="/Servicedesk" />">
+                    <button type="submit">Service Desk Counters</button>
+                    </form> </th>
                 <th>
-                    <a href="<c:url value='/BankingOfficer'/>">Banking Officer</a>
-                </th>
+          <form action="<c:url value="/BankingOfficer" />">
+                    <button type="submit">Banking Officer</button>
+                    </form>      </th>
             </tr>
         </table>
     
