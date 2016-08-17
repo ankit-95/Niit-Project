@@ -329,7 +329,97 @@ public class ConnectionClass {
                 return arr;
    
     }
+
+    public void updateBO(String bocode, String boid, String bohelp) throws ClassNotFoundException, SQLException {
+   
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = null;
+           if(bohelp.equals("boname"))
+         {
+     ps = con.prepareStatement("update bomodel set boname=? where bocode =? ");
+        ps.setString(1,boid);
+        ps.setString(2, bocode);
+        }
+         
+         else if(bohelp.equals("bouname"))
+         {
+      ps = con.prepareStatement("update bomodel set bouname=? where bocode =? ");
+        ps.setString(1,boid);
+        ps.setString(2, bocode);
+       
+         }
+         else if(bohelp.equals("bopwd"))
+         {
+      ps = con.prepareStatement("update bomodel set bopwd=? where bocode =? ");
+        ps.setString(1,boid);
+        ps.setString(2, bocode);
+       
+        
+    }
+        
+           int x = ps.executeUpdate();
+    }
+
+    boolean addSD(String sno, String bcode) throws ClassNotFoundException, SQLException 
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("insert into servicedesk values(?,?);");
+        ps.setString(1, sno);
+        ps.setString(2, bcode);
+        int x =  ps.executeUpdate();
+        if(x>0)
+        {
+            return true;
+        }
+        
+        return false;
+     }
+
+    boolean delSd(String sno) throws ClassNotFoundException, SQLException {
+     
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("delete from servicedesk where sno=?");
+        ps.setString(1, sno);
+        int x =  ps.executeUpdate();
+        if(x>0)
+        {
+             return true;
+        }
+        
+        return false;
+        
+    }
+
+    boolean checkSD(String sno) throws ClassNotFoundException, SQLException {
+   
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("select sno from servicedesk where sno=?");
+        ps.setString(1, sno);
+        ResultSet rs =  ps.executeQuery();
+        if(rs.next())
+        {
+             return true;
+        }
+        
+        return false;
+      
     
+    }
+
+    void updatesd(String sno, String bcode) throws ClassNotFoundException, SQLException {
+    
+          Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ankit","root","1234");
+        PreparedStatement ps = con.prepareStatement("update servicedesk set bcode=? where sno=?;");
+        ps.setString(1, bcode);
+        ps.setString(2, sno);
+        int x = ps.executeUpdate();
+        
+    }
    
    
 }

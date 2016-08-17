@@ -41,13 +41,13 @@
         
                 <br>
         <br>
-      <!--  <form:form action="BranchCreate" method="get" >
+        <form:form action="SDCreate" method="get" >
             <input type="submit" name="btn1" value="Create"/>
             <input type="submit" name="btn1" value="Modify"/>
             <input type="submit" name="btn1" value="Delete"/>
             
         </form:form>
--->
+
         <br>
             <form:form  action="LoginForm" method="post">
                 <input type="submit" value="Logout"  />

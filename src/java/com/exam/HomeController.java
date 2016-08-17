@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.jboss.weld.context.http.Http;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -391,14 +392,14 @@ public class HomeController {
         return new ModelAndView("Deletebo","msg","Such Record Does not Exist.");
             
     }
-
+    
      @RequestMapping(value = "/BoModify",method = RequestMethod.GET)
     public ModelAndView checkboModify(@ModelAttribute (value = "myBo") BOModel myBo) throws ClassNotFoundException, SQLException
     {
         
         ConnectionClass c = new ConnectionClass();
         String bocode = myBo.getBocode();
-       String bohelp = myBo.getBohelp();
+        String bohelp = myBo.getBohelp();
        if(c.checkBo(bocode))
         {
             if(bohelp.equals("boname"))
@@ -416,13 +417,40 @@ public class HomeController {
                 
             }
         }
-        else
+        
         return new ModelAndView("Modifybo","msg","Record Does Not Exist.");
-         return new ModelAndView("BankingOfficer");
-       
+        
         }
      
-      @ModelAttribute(value = "myBo")
+     @RequestMapping(value = "/updateBO",method =RequestMethod.GET)
+     public ModelAndView upadteBO(@ModelAttribute(value = "myBo") BOModel myBo) throws ClassNotFoundException, SQLException
+     {
+         String bocode = myBo.getBocode();
+         String bohelp=myBo.getBohelp();
+         ConnectionClass c = new ConnectionClass();
+         if(bohelp.equals("boname"))
+         {
+             String boname= myBo.getBoname();
+             c.updateBO(bocode,boname,bohelp);
+         }
+         else if(bohelp.equals("bouname"))
+         {
+             String bouname= myBo.getBouname();
+             c.updateBO(bocode,bouname,bohelp);
+       
+         }
+         else if(bohelp.equals("bopwd"))
+         {
+             String bopwd = myBo.getBopwd();
+                   c.updateBO(bocode,bopwd,bohelp);
+       
+         }
+         return new ModelAndView("Modifybo","tt","Banking Officer Updated Successfully.");
+     }
+    
+    
+    
+    @ModelAttribute(value = "myBo")
     public BOModel newbieBo()
     {
         return new BOModel();
@@ -493,7 +521,86 @@ public class HomeController {
         }
         return "Servicedesk";
     }
+        
+    @ModelAttribute(value = "mySD")
+    public ServiceDeskmodel newSD()
+    {
+        return new ServiceDeskmodel();
+    }
     
+    @RequestMapping(value = "/SDCreate",method = RequestMethod.GET)
+    public String sdCheck(HttpServletRequest req)
+    {
+        String btnPressed = req.getParameter("btn1");
+        System.out.println(btnPressed);
+        if(btnPressed.equals("Create"))
+        {
+          return "Createsd";
+        }
+        else if(btnPressed.equals("Modify"))
+        {
+            return "Modifysd";
+        }
+        else if(btnPressed.equals("Delete"))
+        {
+            return "Deletesd";
+        }
+        return "Servicedesk";
+    }
     
+    @RequestMapping(value = "/SDCreate",method = RequestMethod.POST)
+    public ModelAndView createSD(@ModelAttribute(value = "mySD") ServiceDeskmodel mySD) throws ClassNotFoundException, SQLException
+     
+    {
+        ConnectionClass c = new ConnectionClass();
+       String sno = mySD.getSno();
+       String bcode = mySD.getBcode();
+       if(c.addSD(sno,bcode))
+       {
+           return new ModelAndView("Createsd","msg","Service Desk Added SuccessFully");
+       }
+       else
+       {
+           return new ModelAndView("Createsd","msg","There was some problem.");
+           
+       }
+    }
+    
+     @RequestMapping (value="/SDDelete",method = RequestMethod.GET)
+    public ModelAndView sdDel(@ModelAttribute(value = "mySD") ServiceDeskmodel mySD) throws ClassNotFoundException, SQLException
+    {
+        ConnectionClass c = new ConnectionClass();
+        String sno= mySD.getSno();
+        if(c.delSd(sno))
+        return new ModelAndView("Deletesd","msg","Service Desk Deleted Successfuly.");
+        else
+        return new ModelAndView("Deletesd","msg","Such Record Does not Exist.");
+            
+    }
+    
+    @RequestMapping(value = "/SDModify",method = RequestMethod.GET)
+    public ModelAndView sdModify(@ModelAttribute (value = "mySD") ServiceDeskmodel mySD) throws ClassNotFoundException, SQLException
+    {
+        ConnectionClass c = new ConnectionClass();
+        String sno = mySD.getSno();
+        if(c.checkSD(sno))
+        {
+             return new ModelAndView("Modifysd","msg","Exist");
+        }
+        else
+        {
+        return new ModelAndView("Modifysd","msg","Record Does Not Exist.");
+        }
+        }
+
+    @RequestMapping(value = "/updateSD",method = RequestMethod.GET)
+    public ModelAndView upadteSd(@ModelAttribute(value = "mySD") ServiceDeskmodel mySD) throws ClassNotFoundException, SQLException
+    {
+        ConnectionClass c = new ConnectionClass();
+        String sno = mySD.getSno();
+        String bcode = mySD.getBcode();
+        c.updatesd(sno,bcode);
+        return new ModelAndView("Modifysd","tt","Servide Desk Updated Successfully.");
+    }
         }
 

@@ -14,7 +14,7 @@
         <title>Modify Page</title>
     </head>
     <body>
-              <form:form action="BoModify/${myBo.bocode}" commandName="myBo" method="get">
+              <form:form action="BoModify" commandName="myBo" method="get">
             <label> Enter the Banking Officer Code You Want to Modify : </label>
             <form:input path="bocode" />
             <p>
@@ -30,11 +30,56 @@
       
     </body>
 </html>
-          <p style="font-family: cursive;font-size: 14pt">
+<c:choose>
+    <c:when test="${msg=='boname'}">
+        <p> 
+            <form:form action="updateBO" commandName="myBo" method="get">
+                <form:hidden path="bocode"/>
+                <form:hidden path="bohelp"/>
+                <label> Enter the Banking Officer Name : </label>
+                <form:input path="boname"/>
+                <input type="submit" value="Modify"/>
+                </form:form>
+              </p>
+    </c:when>
+        <c:when test="${msg=='bouname'}">
+     <p> 
+            <form:form action="updateBO" commandName="myBo" method="get">
+                <form:hidden path="bocode"/>
+                <form:hidden path="bohelp"/>
+                3
+                <label> Enter the Banking Officer Username : </label>
+                <form:input path="bouname"/>
+                  <input type="submit" value="Modify"/>
+              
+                </form:form>
+              </p>
+    </c:when><c:when test="${msg=='bopwd'}">
+     <p> 
+            <form:form action="updateBO" commandName="myBo" method="get">
+                <form:hidden path="bocode"/>
+                <form:hidden path="bohelp"/>
+                <label> Enter the Banking Officer Password : </label>
+                <form:input path="bopwd"/>
+                  <input type="submit" value="Modify"/>
+              
+                </form:form>
+              </p>
+    </c:when>
+        <c:when test="${msg=='Record Does Not Exist.'}">
+        <p style="font-family: cursive;font-size: 14pt">
     ${msg}
 </p>
-                <br>
+     </c:when>
+        </c:choose>
+ 
+       <p style="font-family: cursive;font-size: 14pt">
+    ${tt}
+</p>
+ 
+               <br>
 <form:form action="BankingOfficer" method="get">
     <input type="submit" value="Back"/>
 </form:form>
+    
     
