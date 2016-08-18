@@ -9,33 +9,42 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page  import=" com.exam.ConnectionClass" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Logged On!!</title>
+            <spring:url value="/resources/bootstrap.min.css" var="bootCSS"/>
+         <link href="${bootCSS}" rel="stylesheet"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1"> 
+           <title>Logged On!!</title>
     </head>
     <body>
-        <table  width="50%">
+      <div class="jumbotron text-center">
+  <h3>!!  Available Services  !! </h3>
+</div>
+
+        <table width="100%">
             <tr>
-                <th>
+                <td style="text-align: center;">
                     <form action="<c:url value="/Product" />">
-                    <button type="submit">Products And Services</button>
+                        <button type="submit" class="btn btn-danger">Products And Services</button>
                     </form>  
-                </th>
-                <th>
+                </td>
+                <td style="text-align: center;">
                     <form action="<c:url value="/Branch" />">
-                    <button type="submit">Branches</button>
+                    <button type="submit" class="btn btn-primary">Branches</button>
                     </form>  
-                </th>
-                <th>
+                </td>
+                <td style="text-align: center;">
                <form action="<c:url value="/Servicedesk" />">
-                    <button type="submit">Service Desk Counters</button>
-                    </form> </th>
-                <th>
+                    <button type="submit" class="btn btn-success">Service Desk Counters</button>
+                    </form> 
+                </td>
+                <td style="text-align: center;">
           <form action="<c:url value="/BankingOfficer" />">
-                    <button type="submit">Banking Officer</button>
-                    </form>      </th>
+                    <button type="submit" class="btn btn-info">Banking Officer</button>
+                    </form>      
+                </td>
             </tr>
         </table>
     

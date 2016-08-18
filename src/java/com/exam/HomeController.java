@@ -137,6 +137,12 @@ public class HomeController {
     @RequestMapping (value="/CentralDisplay",method = RequestMethod.GET)
     public String centralDisplay(HttpServletRequest req)
     {
+         if(ar.isEmpty())
+         {
+             req.setAttribute("Array", "Queue is Empty");
+                  return "centralDisplay";
+   
+         }
         req.setAttribute("Array", ar);
         return "centralDisplay";
     }

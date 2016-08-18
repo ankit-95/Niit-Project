@@ -6,55 +6,44 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                     <spring:url value="/resources/bootstrap.min.css" var="bootCSS"/>
+         <link href="${bootCSS}" rel="stylesheet"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <title>Create Page</title>
     </head>
-    <body>
+    <body style="margin-top: 200px;">
         <form:form action="BoCreate" method="post" commandName="myBo">
-            <table width="70%">
-                <tr>
-                    <td>
+            <div class="form-group" style="margin-left:500px;margin-right:500px">
             <label> Enter the Banking Officer Code: </label>
-                 </td>
-                 <td>
-            <form:input path="bocode"/>
-               </td>
-                    <td>
+            <form:input path="bocode" cssClass="form-control"/>
+            </div>
+            <div class="form-group" style="margin-left:500px;margin-right:500px">
             <label> Enter the Banking Officer Name: </label>
-                    </td>
-                    <td>
-            <form:input path="boname"/>
-                    </td>
-            </tr>
-            <tr>
-                <td>
+            <form:input path="boname" cssClass="form-control"/>
+            </div>
+            <div class="form-group" style="margin-left:500px;margin-right:500px">
             <label> Enter the Username: </label>
-                </td>
-                <td>
-            <form:input path="bouname"/>
-                </td>
-                <td>
+            <form:input path="bouname" cssClass="form-control"/>
+            </div>
+            <div class="form-group" style="margin-left:500px;margin-right:500px">
             <label> Enter the Password: </label>
-                </td>
-                <td>
-            <form:input path="bopwd"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-            <input type="submit" value="ADD DATA"/>
-            </td>
-            </tr>
-</table>
-        </form:form>
+            <form:input path="bopwd" cssClass="form-control"/>
+            </div>
+            <div class="form-group" style="margin-left:500px;margin-right:500px">
+                <input class="btn btn-success" type="submit" value="ADD DATA"/>
+            </div>
+            </form:form>
     </body>
 </html>
-<p style="font-family: cursive;font-size: 14pt">
+<p style="font-family: cursive;font-size: 14pt;margin-left: 500px;">
     ${msg}
 </p>
 <form:form action="BankingOfficer" method="get">
-    <input type="submit" value="Back"/>
-</form:form>
+    <div class="form-group" style="margin-left:500px;margin-right:500px">
+        <input class="btn btn-danger" type="submit" value="Back"/>
+    </div>
+    </form:form>

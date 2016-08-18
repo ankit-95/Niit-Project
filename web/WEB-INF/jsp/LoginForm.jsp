@@ -7,12 +7,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  uri="http://www.springframework.org/tags/form" prefix="form" %>
-
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login Form</title>
+                    <spring:url value="/resources" var="img"/>
+         <spring:url value="/resources/bootstrap.min.css" var="bootCSS"/>
+         <link href="${bootCSS}" rel="stylesheet"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1"> 
+   
+     <title>Login Form</title>
         <script>
             function windowclose()
             {
@@ -22,38 +26,29 @@
                     %>
             }
         </script> 
-
-    </head>
-    <body>
-        <table>
-            <tr>
-        <form:form action="LoginForm" method="post" commandName="myUser">
-            <label> Enter the Username: </label>
-            <form:input path="uname"/>
-            <br>
-            <br>
-            </tr>
-            <tr>
-            <label> Enter the Password: </label>
-            <form:password path="pwd" />
-            <br>
-            <br>
-            </tr>
-            <tr>
-            <td>
-            <input type="submit" value="Logon" />
-            </td>
+          </head>
+          <body style="margin-top: 200px;background-image: url('${img}/background1.jpg');">
+            <form:form action="LoginForm" method="post" commandName="myUser">
+            <div class="form-group" style="margin-left:500px;margin-right:500px">
+            <label>Enter the Username : </label>
+            <form:input path="uname" cssClass="form-control"/>
+        </div>
+        <div class="form-group" style="margin-left:500px;margin-right:500px">
+            <label>Enter the Password : </label>
+            <form:input path="pwd" cssClass="form-control"/>
+        </div>
+        <span>
+            <button class="btn btn-info" style="margin-left: 500px;" >Login</button>
+        </span> 
+        <span>
+        <button class="btn btn-info" onclick="windowclose()"> Exit </button>
+        </span>
             </form:form>
-            <td>
-            <button onclick="windowclose()"> Exit </button>
-            </td>
-            </tr>
-        </table>
         </body>
 </html>
 <c:choose>
     <c:when test="${try=='false'}">
-<p style="color:red; font-family: monospace;font-size: 16pt">
+<p style="color:red; font-family: monospace;font-size: 16pt;margin-left: 450px;">
     ${requestScope.msg}
 </p>
     </c:when>
