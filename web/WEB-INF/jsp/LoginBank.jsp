@@ -28,7 +28,7 @@
         </script> 
 
     </head>
-    <body style="margin-top: 200px;background-image: url('${img}/background1.jpg');">
+    <body style="margin-top: 200px;background-image: url('${img}/background2.jpg');">
         <form:form action="LoginBank" method="post" commandName="myBo">
             <div class="form-group" style="margin-left:500px;margin-right:500px">
             <label>Enter the Username : </label>

@@ -13,6 +13,17 @@ public class ServiceDeskmodel {
     
    private String sno;
    private String bcode;
+   private String operation;
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+   
+   
 
     public void setSno(String sno) {
         this.sno = sno;

@@ -11,12 +11,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+                         <spring:url value="/resources" var="img"/>
                      <spring:url value="/resources/bootstrap.min.css" var="bootCSS"/>
          <link href="${bootCSS}" rel="stylesheet"/>
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
    <title>Branches</title>
     </head>
-    <body>
+    <body style="color: #666600;background-image: url('${img}/background2.jpg');">
         <h1>
           Branches Are : 
         </h1>

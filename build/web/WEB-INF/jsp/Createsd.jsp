@@ -10,12 +10,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+                                <spring:url value="/resources" var="img"/>
+     
                      <spring:url value="/resources/bootstrap.min.css" var="bootCSS"/>
          <link href="${bootCSS}" rel="stylesheet"/>
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <title>Create Page</title>
     </head>
-    <body style="margin-top:200px;">
+    <body style="margin-top:200px;background-image: url('${img}/background2.jpg');">
         <form:form action="SDCreate" method="post" commandName="mySD">
             <div class="form-group" style="margin-left:500px;margin-right:500px">
             <label> Enter the Service Desk Number: </label>
@@ -25,7 +27,12 @@
             <label> Enter the Branch Code: </label>
             <form:input path="bcode" cssClass="form-control"/>
             </div>
-            <div class="form-group" style="margin-left:500px;margin-right:500px">
+             <div class="form-group" style="margin-left:500px;margin-right:500px">
+                 <label> Is Active or Not :</label>
+                 <form:radiobutton path="operation" value="Yes"/>   Yes
+              <form:radiobutton path="operation" value="No"/>   No
+             </div>
+                 <div class="form-group" style="margin-left:500px;margin-right:500px">
                 <input class="btn btn-success" type="submit" value="ADD DATA"/>
             </div>
         </form:form>

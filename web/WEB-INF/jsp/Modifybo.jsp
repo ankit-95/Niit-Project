@@ -7,25 +7,37 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Modify Page</title>
+                                               <spring:url value="/resources" var="img"/>
+      <spring:url value="/resources/bootstrap.min.css" var="bootCSS"/>
+         <link href="${bootCSS}" rel="stylesheet"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1"> 
+            <title>Modify Page</title>
     </head>
-    <body>
+    <body style="margin-top: 200px;background-image: url('${img}/background2.jpg');">
               <form:form action="BoModify" commandName="myBo" method="get">
-            <label> Enter the Banking Officer Code You Want to Modify : </label>
-            <form:input path="bocode" />
+                  <div class="form-group" style="margin-left:500px;margin-right:500px">
+                  <label> Enter the Banking Officer Code You Want to Modify : </label>
+                  <form:input path="bocode" cssClass="form-control"/>
+                  </div>
             <p>
-                Select the Information you want to Change : 
+                <div class="form-group" style="margin-left:500px;margin-right:500px">
+                    <label> Select the Information you want to Change : </label>
+                </div>
             </p>
+            <div class="form-group" style="margin-left:500px;margin-right:500px">
             <form:checkbox path="bohelp" value="boname"/>Banking Officer Name
             <form:checkbox path="bohelp" value="bouname"/>Username
             <form:checkbox path="bohelp" value="bopwd"/>Password
+            </div>
             <br> 
             <br> 
-            <input type="submit" value="Validate Banking Officer Code" />
+            <div class="form-group" style="margin-left:500px;margin-right:500px">
+                <input class="btn btn-warning" type="submit" value="Validate Banking Officer Code" />
+            </div>
           </form:form>
       
     </body>
@@ -36,9 +48,11 @@
             <form:form action="updateBO" commandName="myBo" method="get">
                 <form:hidden path="bocode"/>
                 <form:hidden path="bohelp"/>
+                <div class="form-group" style="margin-left:500px;margin-right:500px">
                 <label> Enter the Banking Officer Name : </label>
                 <form:input path="boname"/>
-                <input type="submit" value="Modify"/>
+                <input class="btn btn-success" type="submit" value="Modify"/>
+                </div>
                 </form:form>
               </p>
     </c:when>
@@ -47,11 +61,11 @@
             <form:form action="updateBO" commandName="myBo" method="get">
                 <form:hidden path="bocode"/>
                 <form:hidden path="bohelp"/>
-                3
+                <div class="form-group" style="margin-left:500px;margin-right:500px">
                 <label> Enter the Banking Officer Username : </label>
                 <form:input path="bouname"/>
-                  <input type="submit" value="Modify"/>
-              
+                <input class="btn btn-success" type="submit" value="Modify"/>
+                </div>
                 </form:form>
               </p>
     </c:when><c:when test="${msg=='bopwd'}">
@@ -59,27 +73,30 @@
             <form:form action="updateBO" commandName="myBo" method="get">
                 <form:hidden path="bocode"/>
                 <form:hidden path="bohelp"/>
+                <div class="form-group" style="margin-left:500px;margin-right:500px">
                 <label> Enter the Banking Officer Password : </label>
                 <form:input path="bopwd"/>
-                  <input type="submit" value="Modify"/>
-              
+                <input class="btn btn-success" type="submit" value="Modify"/>
+                </div>
                 </form:form>
               </p>
     </c:when>
         <c:when test="${msg=='Record Does Not Exist.'}">
-        <p style="font-family: cursive;font-size: 14pt">
+        <p style="font-family: cursive;font-size: 14pt;margin-left: 500px;">
     ${msg}
 </p>
      </c:when>
         </c:choose>
  
-       <p style="font-family: cursive;font-size: 14pt">
+       <p style="font-family: cursive;font-size: 14pt;margin-left: 500px;">
     ${tt}
 </p>
  
                <br>
 <form:form action="BankingOfficer" method="get">
-    <input type="submit" value="Back"/>
-</form:form>
+    <div class="form-group" style="margin-left:500px;margin-right:500px">
+        <input class="btn btn-danger" type="submit" value="Back"/>
+    </div>
+    </form:form>
     
     

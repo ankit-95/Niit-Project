@@ -11,12 +11,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+                                 <spring:url value="/resources" var="img"/>
+       
                            <spring:url value="/resources/bootstrap.min.css" var="bootCSS"/>
          <link href="${bootCSS}" rel="stylesheet"/>
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
       <title>Logged On!!!!</title>
     </head>
-    <body>
+    <body style="background-image: url('${img}/background2.jpg');">
         <form:form action="BankInc" method="get">
             <input style="margin-top: 100px;margin-left: 200px;" class="btn btn-danger" type="submit" value="Delete From Queue" />
         </form:form>

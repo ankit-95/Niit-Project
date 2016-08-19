@@ -10,12 +10,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+                                <spring:url value="/resources" var="img"/>
+     
         <spring:url value="/resources/bootstrap.min.css" var="bootCSS"/>
          <link href="${bootCSS}" rel="stylesheet"/>
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <title>Create Page</title>
     </head>
-    <body style="margin-top:200px;">
+    <body style="margin-top:200px;background-image: url('${img}/background2.jpg');">
         <form:form action="BranchCreate" method="post" commandName="myBranch">
             <div class="form-group" style="margin-left:500px;margin-right:500px">
             <label> Enter the Branch Code: </label>

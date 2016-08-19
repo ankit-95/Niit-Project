@@ -561,15 +561,14 @@ public class HomeController {
         ConnectionClass c = new ConnectionClass();
        String sno = mySD.getSno();
        String bcode = mySD.getBcode();
-       if(c.addSD(sno,bcode))
-       {
+       if(c.checkBranch(bcode))
+       {    
+          c.addSD(sno, bcode);
            return new ModelAndView("Createsd","msg","Service Desk Added SuccessFully");
        }
-       else
-       {
-           return new ModelAndView("Createsd","msg","There was some problem.");
            
-       }
+       return new ModelAndView("Createsd","msg","There was some problem/Branch Doesnot Exixt.");
+           
     }
     
      @RequestMapping (value="/SDDelete",method = RequestMethod.GET)
@@ -605,8 +604,13 @@ public class HomeController {
         ConnectionClass c = new ConnectionClass();
         String sno = mySD.getSno();
         String bcode = mySD.getBcode();
+        if(c.checkBranch(bcode))
+        {
         c.updatesd(sno,bcode);
         return new ModelAndView("Modifysd","tt","Servide Desk Updated Successfully.");
-    }
+        }
+        
+        return new ModelAndView("Modifysd","tt","Branch Does Not Exist.");
+         }
         }
 

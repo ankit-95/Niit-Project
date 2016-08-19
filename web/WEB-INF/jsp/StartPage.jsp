@@ -16,13 +16,12 @@ servlet but should be the only JSP outside of WEB-INF.
      <meta name="viewport" content="width=device-width, initial-scale=1"> 
          <title> Start Page</title>
     </head>
-    <body style="background-image: url('${img}/background1.jpg');">
+    <body style="background-image: url('${img}/background2.jpg');">
         <div class="jumbotron text-center">
   <h1>Welcome to Groupfund Banking System</h1>
 </div>
 
-        <div class="container"> 
-
+        <div class="container">
      <div class="row">
          <div class="col-sm-4" style="text-align: center">
                <form action="<c:url value="/LoginForm" />">
