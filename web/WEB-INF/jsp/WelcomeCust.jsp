@@ -19,7 +19,7 @@
      <title>Welcome</title>
                
     </head>
-    <body>
+    <body style="background-image: url('${img}/background2.jpg');">
         <form:form action="GenTicket" method="post">
           <div class="jumbotron text-center">
 <marquee> <h1>Welcome to GroupFund Queue Management System</h1> </marquee>

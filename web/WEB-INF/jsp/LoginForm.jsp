@@ -30,12 +30,12 @@
           <body style="margin-top: 200px;background-image: url('${img}/background2.jpg');">
             <form:form action="LoginForm" method="post" commandName="myUser">
             <div class="form-group" style="margin-left:500px;margin-right:500px">
-            <label>Enter the Username : </label>
+                <label>Enter the Username : </label> <font style="color: red;"><form:errors path="uname"/></font>
             <form:input path="uname" cssClass="form-control"/>
         </div>
         <div class="form-group" style="margin-left:500px;margin-right:500px">
-            <label>Enter the Password : </label>
-            <form:input path="pwd" cssClass="form-control"/>
+            <label>Enter the Password : </label> <font style="color: red"> <form:errors path="pwd" /></font>
+            <form:password path="pwd" cssClass="form-control"/>
         </div>
         <span>
             <button class="btn btn-info" style="margin-left: 500px;" >Login</button>

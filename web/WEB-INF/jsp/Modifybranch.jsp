@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-                                      <spring:url value="/resources" var="img"/>
+      <spring:url value="/resources" var="img"/>
       <spring:url value="/resources/bootstrap.min.css" var="bootCSS"/>
          <link href="${bootCSS}" rel="stylesheet"/>
      <meta name="viewport" content="width=device-width, initial-scale=1"> 

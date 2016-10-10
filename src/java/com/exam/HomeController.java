@@ -9,9 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.jboss.weld.context.http.Http;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,8 +47,12 @@ public class HomeController {
         return "LoginForm";
     }
     @RequestMapping(value = "/LoginForm",method = RequestMethod.POST)
-    public ModelAndView validateLogin(@ModelAttribute("myUser") UserModel myUser,HttpServletRequest req) throws ClassNotFoundException, SQLException
+    public ModelAndView validateLogin(@ModelAttribute("myUser") @Valid UserModel myUser,BindingResult result,HttpServletRequest req) throws ClassNotFoundException, SQLException
     {
+        if(result.hasErrors())
+        {
+            return new ModelAndView("LoginForm");
+        }
         sess= req.getSession();
         System.out.println(sess);
         

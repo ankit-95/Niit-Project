@@ -5,13 +5,21 @@
  */
 package com.exam;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  *
  * @author ANKIT
  */
 public class UserModel {
-    
+    @NotBlank
+    @Size(min = 1,max = 7)
     private String uname;
+    @NotBlank
+    @Size(min = 1,max = 7)
+   
     private String pwd;
 
     public void setUname(String uname) {

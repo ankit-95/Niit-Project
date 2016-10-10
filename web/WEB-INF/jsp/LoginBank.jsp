@@ -36,7 +36,7 @@
         </div>
         <div class="form-group" style="margin-left:500px;margin-right:500px">
             <label>Enter the Password : </label>
-            <form:input path="bopwd" cssClass="form-control"/>
+            <form:password path="bopwd" cssClass="form-control"/>
         </div>
         <span>
             <button class="btn btn-info" style="margin-left: 500px;" >Login</button>

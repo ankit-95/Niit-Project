@@ -5,13 +5,13 @@
  */
 package com.exam;
 
+
 /**
  *
  * @author ANKIT
  */
 public class ProductModel {
-    
-    private String pcode;
+   private String pcode;
     private String pdesp;
 
     public void setPcode(String pcode) {
