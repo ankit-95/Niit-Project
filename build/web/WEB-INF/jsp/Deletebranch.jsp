@@ -19,7 +19,7 @@
     <body style="margin-top: 200px;background-image: url('${img}/background2.jpg');">
         <form:form action="BranchDelete" commandName="myBranch" method="get">
              <div class="form-group" style="margin-left:500px;margin-right:500px">
-            <label> Enter the Branch Code You Want to Delete : </label>
+            <label> Enter the Branch Code You Want to Delete : </label> <font style="color: red;"><form:errors path="bcode"/></font>
             <form:input path="bcode" cssClass="form-control"/>
              </div> 
              <div class="form-group" style="margin-left:500px;margin-right:500px">

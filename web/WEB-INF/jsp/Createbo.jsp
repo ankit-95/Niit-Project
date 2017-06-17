@@ -19,19 +19,19 @@
     <body style="margin-top: 200px;background-image: url('${img}/background2.jpg')">
         <form:form action="BoCreate" method="post" commandName="myBo">
             <div class="form-group" style="margin-left:500px;margin-right:500px">
-            <label> Enter the Banking Officer Code: </label>
+            <label> Enter the Banking Officer Code: </label> <font style="color: red;"><form:errors path="bocode"/></font>
             <form:input path="bocode" cssClass="form-control"/>
             </div>
             <div class="form-group" style="margin-left:500px;margin-right:500px">
-            <label> Enter the Banking Officer Name: </label>
+            <label> Enter the Banking Officer Name: </label> <font style="color: red;"><form:errors path="boname"/></font>
             <form:input path="boname" cssClass="form-control"/>
             </div>
             <div class="form-group" style="margin-left:500px;margin-right:500px">
-            <label> Enter the Username: </label>
+            <label> Enter the Username: </label> <font style="color: red;"><form:errors path="bouname"/></font>
             <form:input path="bouname" cssClass="form-control"/>
             </div>
             <div class="form-group" style="margin-left:500px;margin-right:500px">
-            <label> Enter the Password: </label>
+            <label> Enter the Password: </label> <font style="color: red;"><form:errors path="bopwd"/></font>
             <form:input path="bopwd" cssClass="form-control"/>
             </div>
             <div class="form-group" style="margin-left:500px;margin-right:500px">

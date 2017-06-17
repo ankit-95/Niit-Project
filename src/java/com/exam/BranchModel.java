@@ -5,13 +5,16 @@
  */
 package com.exam;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  *
  * @author ANKIT
  */
 public class BranchModel {
-    
+    @NotBlank(message="Field Can't be NULL")
     private String bcode;
+    @NotBlank(message="Field Can't be NULL")
     private String blocation;
 
     public void setBcode(String bcode) {

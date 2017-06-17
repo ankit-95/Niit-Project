@@ -20,11 +20,11 @@
     <body style="margin-top: 200px;background-image: url('${img}/background2.jpg');">
               <form:form action="ProductModify" commandName="myProduct" method="get">
             <div class="form-group" style="margin-left:500px;margin-right:500px">
-                  <label> Enter the Product Code You Want to Modify : </label>
+                  <label> Enter the Product Code You Want to Modify : </label> <font style="color: red;"><form:errors path="pcode"/></font>
                   <form:input path="pcode" cssClass="form-control"/>
             </div>
             <div class="form-group" style="margin-left:500px;margin-right:500px">
-             <label> Enter the Product Description : </label>
+             <label> Enter the Product Description : </label> <font style="color: red;"><form:errors path="pdesp"/></font>
             <form:input path="pdesp" cssClass="form-control"/>
             </div>
             <div class="form-group" style="margin-left:500px;margin-right:500px">

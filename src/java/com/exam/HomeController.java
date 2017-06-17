@@ -196,9 +196,12 @@ public class HomeController {
     }
     
     @RequestMapping(value = "/ProductCreate",method = RequestMethod.POST)
-    public ModelAndView createProduct(@ModelAttribute(value = "myProduct") ProductModel myProductModel) throws ClassNotFoundException, SQLException
-     
+    public ModelAndView createProduct(@Valid @ModelAttribute(value = "myProduct") ProductModel myProductModel,BindingResult result) throws ClassNotFoundException, SQLException
     {
+        if(result.hasErrors())
+        {
+            return new ModelAndView("Createproduct");
+        }
         ConnectionClass c = new ConnectionClass();
        String pcode = myProductModel.getPcode();
        String pdesp = myProductModel.getPdesp();
@@ -214,7 +217,7 @@ public class HomeController {
     }
     
     @RequestMapping (value="/ProductDelete",method = RequestMethod.GET)
-    public ModelAndView productDel(@ModelAttribute(value = "myProduct") ProductModel myProduct) throws ClassNotFoundException, SQLException
+    public ModelAndView productDel(@ModelAttribute(value = "myProduct") ProductModel myProduct,BindingResult result) throws ClassNotFoundException, SQLException
     {
         ConnectionClass c = new ConnectionClass();
         String pcode= myProduct.getPcode();
@@ -226,8 +229,12 @@ public class HomeController {
     }
     
     @RequestMapping(value = "/ProductModify",method = RequestMethod.GET)
-    public ModelAndView productModify(@ModelAttribute (value = "myProduct") ProductModel myProductModel) throws ClassNotFoundException, SQLException
+    public ModelAndView productModify(@Valid @ModelAttribute (value = "myProduct") ProductModel myProductModel,BindingResult result) throws ClassNotFoundException, SQLException
     {
+        if(result.hasErrors())
+        {
+            return  new ModelAndView("Modifyproduct");
+        }
         ConnectionClass c = new ConnectionClass();
         String pcode = myProductModel.getPcode();
         String pdesp = myProductModel.getPdesp();
@@ -266,6 +273,7 @@ public class HomeController {
     @RequestMapping(value = "/BranchCreate",method = RequestMethod.GET)
     public String BranchCheck(HttpServletRequest req)
     {
+        
         String btnPressed = req.getParameter("btn1");
         System.out.println(btnPressed);
         if(btnPressed.equals("Create"))
@@ -285,9 +293,13 @@ public class HomeController {
     }
     
      @RequestMapping(value = "/BranchCreate",method = RequestMethod.POST)
-    public ModelAndView createBranch(@ModelAttribute(value = "myBranch") BranchModel myBranch) throws ClassNotFoundException, SQLException
+    public ModelAndView createBranch(@Valid @ModelAttribute(value = "myBranch") BranchModel myBranch,BindingResult result) throws ClassNotFoundException, SQLException
      
     {
+        if(result.hasErrors())
+        {
+            return  new ModelAndView("Createbranch");
+        }
         ConnectionClass c = new ConnectionClass();
        String bcode = myBranch.getBcode();
        String blocation = myBranch.getBlocation();
@@ -303,8 +315,9 @@ public class HomeController {
     }
    
      @RequestMapping (value="/BranchDelete",method = RequestMethod.GET)
-    public ModelAndView branchDel(@ModelAttribute(value = "myBranch") BranchModel myBranch) throws ClassNotFoundException, SQLException
+    public ModelAndView branchDel(@ModelAttribute(value = "myBranch") BranchModel myBranch,BindingResult result) throws ClassNotFoundException, SQLException
     {
+   
         ConnectionClass c = new ConnectionClass();
         String bcode= myBranch.getBcode();
         if(c.delBranch(bcode))
@@ -315,8 +328,12 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/BranchModify",method = RequestMethod.GET)
-    public ModelAndView branchModify(@ModelAttribute (value = "myBranch") BranchModel myBranch) throws ClassNotFoundException, SQLException
+    public ModelAndView branchModify(@Valid @ModelAttribute (value = "myBranch") BranchModel myBranch,BindingResult result) throws ClassNotFoundException, SQLException
     {
+        if(result.hasErrors())
+        {
+            return new ModelAndView("Modifybranch");
+        }
         ConnectionClass c = new ConnectionClass();
         String bcode = myBranch.getBcode();
         String blocation = myBranch.getBlocation();
@@ -374,7 +391,7 @@ public class HomeController {
     }
     
     @RequestMapping(value = "/BoCreate",method = RequestMethod.POST)
-    public ModelAndView createBo(@ModelAttribute(value = "myBo") BOModel myBo) throws ClassNotFoundException, SQLException
+    public ModelAndView createBo(@ModelAttribute(value = "myBo") BOModel myBo,BindingResult result) throws ClassNotFoundException, SQLException
      
     {
         ConnectionClass c = new ConnectionClass();
@@ -394,8 +411,9 @@ public class HomeController {
     }
     
      @RequestMapping (value="/BoDelete",method = RequestMethod.GET)
-    public ModelAndView boDel(@ModelAttribute(value = "myBo") BOModel myBo) throws ClassNotFoundException, SQLException
+    public ModelAndView boDel(@ModelAttribute(value = "myBo") BOModel myBo,BindingResult result) throws ClassNotFoundException, SQLException
     {
+       
         ConnectionClass c = new ConnectionClass();
         String bocode= myBo.getBocode();
         if(c.delBo(bocode))
@@ -406,9 +424,8 @@ public class HomeController {
     }
     
      @RequestMapping(value = "/BoModify",method = RequestMethod.GET)
-    public ModelAndView checkboModify(@ModelAttribute (value = "myBo") BOModel myBo) throws ClassNotFoundException, SQLException
+    public ModelAndView checkboModify(@ModelAttribute (value = "myBo") BOModel myBo,BindingResult result) throws ClassNotFoundException, SQLException
     {
-        
         ConnectionClass c = new ConnectionClass();
         String bocode = myBo.getBocode();
         String bohelp = myBo.getBohelp();
@@ -435,7 +452,7 @@ public class HomeController {
         }
      
      @RequestMapping(value = "/updateBO",method =RequestMethod.GET)
-     public ModelAndView upadteBO(@ModelAttribute(value = "myBo") BOModel myBo) throws ClassNotFoundException, SQLException
+     public ModelAndView upadteBO(@ModelAttribute(value = "myBo") BOModel myBo,BindingResult result) throws ClassNotFoundException, SQLException
      {
          String bocode = myBo.getBocode();
          String bohelp=myBo.getBohelp();
@@ -475,7 +492,7 @@ public class HomeController {
         return "LoginBank";
     }
     @RequestMapping(value = "/LoginBank",method = RequestMethod.POST)
-    public ModelAndView validateLogin(@ModelAttribute("myBo") BOModel myBo,HttpServletRequest req) throws ClassNotFoundException, SQLException
+    public ModelAndView validateLogin(@ModelAttribute("myBo") BOModel myBo,BindingResult result,HttpServletRequest req) throws ClassNotFoundException, SQLException
     {
         sess= req.getSession();
         
@@ -561,9 +578,13 @@ public class HomeController {
     }
     
     @RequestMapping(value = "/SDCreate",method = RequestMethod.POST)
-    public ModelAndView createSD(@ModelAttribute(value = "mySD") ServiceDeskmodel mySD) throws ClassNotFoundException, SQLException
+    public ModelAndView createSD(@Valid @ModelAttribute(value = "mySD") ServiceDeskmodel mySD,BindingResult result) throws ClassNotFoundException, SQLException
      
     {
+        if(result.hasErrors())
+        {
+            return  new ModelAndView("Createsd");
+        }
         ConnectionClass c = new ConnectionClass();
        String sno = mySD.getSno();
        String bcode = mySD.getBcode();
@@ -590,7 +611,7 @@ public class HomeController {
     }
     
     @RequestMapping(value = "/SDModify",method = RequestMethod.GET)
-    public ModelAndView sdModify(@ModelAttribute (value = "mySD") ServiceDeskmodel mySD) throws ClassNotFoundException, SQLException
+    public ModelAndView sdModify(@ModelAttribute (value = "mySD") ServiceDeskmodel mySD,BindingResult result) throws ClassNotFoundException, SQLException
     {
         ConnectionClass c = new ConnectionClass();
         String sno = mySD.getSno();

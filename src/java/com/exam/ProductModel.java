@@ -5,13 +5,12 @@
  */
 package com.exam;
 
+import org.hibernate.validator.constraints.NotBlank;
 
-/**
- *
- * @author ANKIT
- */
 public class ProductModel {
-   private String pcode;
+   @NotBlank(message="Field Can't be NULL")
+    private String pcode;
+   @NotBlank(message="Field Can't be NULL")
     private String pdesp;
 
     public void setPcode(String pcode) {

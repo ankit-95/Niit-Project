@@ -21,7 +21,7 @@
               <form:form action="SDModify" commandName="mySD" method="get">
             <div class="form-group" style="margin-left:500px;margin-right:500px">
 
-                  <label> Enter the Service Desk Number You Want to Modify : </label>
+                  <label> Enter the Service Desk Number You Want to Modify : </label> <font style="color: red;"><form:errors path="sno"/></font>
                   <form:input path="sno" cssClass="form-control"/>
             </div>
             <div class="form-group" style="margin-left:500px;margin-right:500px">
@@ -43,7 +43,7 @@
         <form:hidden path="sno"/>
         <div class="form-group" style="margin-left:500px;margin-right:500px">
 
-        <label> Enter the Branch Code: </label>
+        <label> Enter the Branch Code: </label> <font style="color: red;"><form:errors path="bcode"/></font>
         <form:input path="bcode" cssClass="form-control"/> 
         </div>
         <div class="form-group" style="margin-left:500px;margin-right:500px">

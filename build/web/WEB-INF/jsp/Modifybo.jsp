@@ -20,7 +20,7 @@
     <body style="margin-top: 200px;background-image: url('${img}/background2.jpg');">
               <form:form action="BoModify" commandName="myBo" method="get">
                   <div class="form-group" style="margin-left:500px;margin-right:500px">
-                  <label> Enter the Banking Officer Code You Want to Modify : </label>
+                  <label> Enter the Banking Officer Code You Want to Modify : </label> <font style="color: red;"><form:errors path="bocode"/></font>
                   <form:input path="bocode" cssClass="form-control"/>
                   </div>
             <p>
@@ -49,7 +49,7 @@
                 <form:hidden path="bocode"/>
                 <form:hidden path="bohelp"/>
                 <div class="form-group" style="margin-left:500px;margin-right:500px">
-                <label> Enter the Banking Officer Name : </label>
+                <label> Enter the Banking Officer Name : </label> <font style="color: red;"><form:errors path="boname"/></font>
                 <form:input path="boname"/>
                 <input class="btn btn-success" type="submit" value="Modify"/>
                 </div>
@@ -62,7 +62,7 @@
                 <form:hidden path="bocode"/>
                 <form:hidden path="bohelp"/>
                 <div class="form-group" style="margin-left:500px;margin-right:500px">
-                <label> Enter the Banking Officer Username : </label>
+                <label> Enter the Banking Officer Username : </label> <font style="color: red;"><form:errors path="bouname"/></font>
                 <form:input path="bouname"/>
                 <input class="btn btn-success" type="submit" value="Modify"/>
                 </div>
@@ -74,7 +74,7 @@
                 <form:hidden path="bocode"/>
                 <form:hidden path="bohelp"/>
                 <div class="form-group" style="margin-left:500px;margin-right:500px">
-                <label> Enter the Banking Officer Password : </label>
+                <label> Enter the Banking Officer Password : </label> <font style="color: red;"><form:errors path="bopwd"/></font>
                 <form:input path="bopwd"/>
                 <input class="btn btn-success" type="submit" value="Modify"/>
                 </div>

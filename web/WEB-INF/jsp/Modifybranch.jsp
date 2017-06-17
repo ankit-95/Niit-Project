@@ -21,12 +21,12 @@
               <form:form action="BranchModify" commandName="myBranch" method="get">
              <div class="form-group" style="margin-left:500px;margin-right:500px">
    
-            <label> Enter the Branch Code You Want to Modify : </label>
+            <label> Enter the Branch Code You Want to Modify : </label> <font style="color: red;"><form:errors path="bcode"/></font>
             <form:input path="bcode" cssClass="form-control"/>
              </div>
                       <div class="form-group" style="margin-left:500px;margin-right:500px">
    
-            <label> Enter the Branch Location : </label>
+            <label> Enter the Branch Location : </label> <font style="color: red;"><form:errors path="blocation"/></font>
             <form:input path="blocation" cssClass="form-control"/>
                       </div>
                                <div class="form-group" style="margin-left:500px;margin-right:500px">

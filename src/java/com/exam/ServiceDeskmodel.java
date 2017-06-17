@@ -5,14 +5,18 @@
  */
 package com.exam;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  *
  * @author ANKIT
  */
 public class ServiceDeskmodel {
-    
+   @NotBlank(message="Field Can't be NULL")
    private String sno;
+   @NotBlank(message="Field Can't be NULL")
    private String bcode;
+   @NotBlank(message="Field Can't be NULL")
    private String operation;
 
     public void setOperation(String operation) {

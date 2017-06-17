@@ -20,7 +20,7 @@
     <body style="margin-top: 200px;background-image: url('${img}/background2.jpg');">
         <form:form action="BoDelete" commandName="myBo" method="get">
             <div class="form-group" style="margin-left:500px;margin-right:500px">
-            <label> Enter the Banking Officer Code You Want to Delete : </label>
+            <label> Enter the Banking Officer Code You Want to Delete : </label> <font style="color: red;"><form:errors path="bocode"/></font>
             <form:input path="bocode" cssClass="form-control" />
             </div>
             <div class="form-group" style="margin-left:500px;margin-right:500px">

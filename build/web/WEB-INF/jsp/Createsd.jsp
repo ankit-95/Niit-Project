@@ -20,11 +20,11 @@
     <body style="margin-top:200px;background-image: url('${img}/background2.jpg');">
         <form:form action="SDCreate" method="post" commandName="mySD">
             <div class="form-group" style="margin-left:500px;margin-right:500px">
-            <label> Enter the Service Desk Number: </label>
+            <label> Enter the Service Desk Number: </label> <font style="color: red;"><form:errors path="sno"/></font>
             <form:input path="sno" cssClass="form-control"/>
             </div>
             <div class="form-group" style="margin-left:500px;margin-right:500px">
-            <label> Enter the Branch Code: </label>
+            <label> Enter the Branch Code: </label> <font style="color: red;"><form:errors path="bcode"/></font>
             <form:input path="bcode" cssClass="form-control"/>
             </div>
              <div class="form-group" style="margin-left:500px;margin-right:500px">

@@ -20,11 +20,11 @@
     <body style="margin-top:200px;background-image: url('${img}/background2.jpg');">
         <form:form action="BranchCreate" method="post" commandName="myBranch">
             <div class="form-group" style="margin-left:500px;margin-right:500px">
-            <label> Enter the Branch Code: </label>
+            <label> Enter the Branch Code: </label> <font style="color: red;"><form:errors path="bcode"/></font>
             <form:input path="bcode" cssClass="form-control"/>
             </div>
             <div class="form-group" style="margin-left:500px;margin-right:500px">
-            <label> Enter the Branch Location: </label>
+            <label> Enter the Branch Location: </label> <font style="color: red;"><form:errors path="blocation"/></font>
             <form:input path="blocation" cssClass="form-control"/>
             </div>
             <div class="form-group" style="margin-left:500px;margin-right:500px">
